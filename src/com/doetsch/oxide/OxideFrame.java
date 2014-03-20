@@ -1,9 +1,12 @@
 package com.doetsch.oxide;
 
+import java.awt.Cursor;
 import java.awt.EventQueue;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -21,10 +24,6 @@ import javax.swing.border.LineBorder;
  */
 public class OxideFrame extends JFrame {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8324107253333263909L;
 
 	/*
 	 * Draws a white border around the given JLabel when the
@@ -76,6 +75,127 @@ public class OxideFrame extends JFrame {
 		}
 	}
 	
+	/**
+	 * DragAnchorLabel is the implementation of a JLabel that acts as
+	 * a drag anchor point for the frame to allow the position of the 
+	 * frame to change by dragging.
+	 * 
+	 * @author Jacob Wesley Doetsch
+	 */
+	private class DragAnchorLabel extends JLabel {
+
+		/*
+		 * Generated serial ID to satisfy Serializable.
+		 */
+		private static final long serialVersionUID = -473202219857073619L;
+		
+		//The initial position of the cursor before dragging occurs
+		private Point dragAnchorLocation;
+		
+		/*
+		 * Creates a DragAnchorLabel instance with the label defines
+		 * by the given text.
+		 * 
+		 * @param text a String representation of the label's text
+		 */
+		private DragAnchorLabel (String text) {
+			super(text);
+			
+			build();		
+		}
+		
+		/*
+		 * Adds the appropriate action listener components to handle and 
+		 * control the dragging action.
+		 */
+		private void build () {
+			
+			/*
+			 * Add an action  listener that sets the drag anchor point once dragging
+			 * is initiated by an initial mouse click
+			 */
+			this.addMouseListener(new MouseListener() {
+
+				public void mouseClicked (MouseEvent e) {
+				}
+
+				/*
+				 * Changes the cursor to a move cursor when the label is hovered over
+				 */
+				public void mouseEntered (MouseEvent e) {
+					setCursor(new Cursor(Cursor.MOVE_CURSOR));
+				}
+
+				public void mouseExited (MouseEvent e) {
+				}
+
+				/*
+				 * Record the mouse cursor's location with regards to view port
+				 */
+				public void mousePressed (MouseEvent e) {
+					dragAnchorLocation = e.getLocationOnScreen();
+				}
+
+				public void mouseReleased (MouseEvent e) {
+				}
+				
+			});
+			
+			
+			/*
+			 * Add an action listener that handles the drag action
+			 */
+			this.addMouseMotionListener(new MouseMotionListener() {
+
+				/*
+				 * Record the mouse cursor's current location as it is dragged, adding the
+				 * different between the current location and the anchor location to the 
+				 * position of the content pane.
+				 */
+				@Override
+				public void mouseDragged (MouseEvent e) {
+					
+					//Record the cursors current position with regards to the viewport
+					Point currentCursorLocation = e.getLocationOnScreen();
+					
+					/*
+					 * Add the different between the cursor's current position and the cursor's
+					 * previous position (the anchor point) to the content pane's position. The 
+					 * content pane's position respects the viewport directly, not it's parent 
+					 * panel (the decorationframe) nor the parent frame
+					 */
+					OxideFrame.this.contentPaneLeft += (currentCursorLocation.x - dragAnchorLocation.x);
+					OxideFrame.this.contentPaneTop += (currentCursorLocation.y - dragAnchorLocation.y);
+					
+					/*
+					 * Consider the current position as the future previous position by updating
+					 * the drag anchor point accordingly
+					 */
+					dragAnchorLocation.x = currentCursorLocation.x;
+					dragAnchorLocation.y = currentCursorLocation.y;
+					
+					/*
+					 * Resize/redraw the frame's decoration components with respect to the
+					 * content pane's new position.
+					 */
+					resizeFrame();
+				}
+
+				@Override
+				public void mouseMoved (MouseEvent arg0) {
+				}
+				
+			});			
+		}
+		
+	}
+	
+	
+	/*
+	 * Satisfies Serializable.
+	 */
+	private static final long serialVersionUID = -8324107253333263909L;
+		
 	/*
 	 * Frame pane/panel component
 	 */
@@ -86,7 +206,7 @@ public class OxideFrame extends JFrame {
 	/*
 	 * Title bar components
 	 */
-	private JLabel titleLabel;
+	private DragAnchorLabel titleLabel;
 	private JLabel miniLabel;
 	private JLabel exitLabel;
 	
@@ -168,13 +288,12 @@ public class OxideFrame extends JFrame {
 			/*
 			 * The title label
 			 */
-			titleLabel = new JLabel(" Title");
+			titleLabel = new DragAnchorLabel(" Title");
 			titleLabel.setVerticalAlignment(JLabel.CENTER);
 			titleLabel.setFont((isParentFrame) ? OxidePalette.titleFontFace : OxidePalette.subFrameTitleFontFace);
 			titleLabel.setForeground((isParentFrame) ? OxidePalette.titleFontColor : OxidePalette.subFrameTitleFontColor);
 			titleLabel.setBackground(OxidePalette.decorationBorderColor);
 			titleLabel.setOpaque(true);
-			titleLabel.addMouseListener(new LabelHoverListener(titleLabel));
 			
 			/*
 			 * The minimize label/icon
