@@ -391,10 +391,14 @@ public class OxideFrame extends JFrame {
 		 * Resize and reposition decoration pane components
 		 */
 		{
-			titleLabel.setBounds(decorationBorderWidth,
-					decorationBorderWidth,
-					contentPaneWidth - (2 * decorationBorderWidth) - (2 * titleLabelHeight),
-					titleLabelHeight);
+//			titleLabel.setBounds(decorationBorderWidth,
+//					decorationBorderWidth,
+//					contentPaneWidth - (2 * decorationBorderWidth) - (2 * titleLabelHeight),
+//					titleLabelHeight);
+			titleLabel.setBounds(0,
+					0,
+					contentPaneWidth - (2 * titleLabelHeight),
+					titleLabelHeight + (2 * decorationBorderWidth));
 			
 			miniLabel.setBounds(contentPaneWidth - (2 * titleLabelHeight),
 					decorationBorderWidth,
