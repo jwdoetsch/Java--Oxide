@@ -69,7 +69,6 @@ public class OxideMenuButton extends JLabel {
 			@Override
 			public void mouseEntered (MouseEvent e) {
 				OxideMenuButton.this.setBorder(OxidePalette.buttonHoverBorder);
-				OxideMenuButton.this.setBackground(OxidePalette.menuButtonSelectedColor);
 			}
 
 			/*
@@ -79,7 +78,6 @@ public class OxideMenuButton extends JLabel {
 			@Override
 			public void mouseExited (MouseEvent e) {
 				OxideMenuButton.this.setBorder(null);
-				OxideMenuButton.this.setBackground(OxidePalette.menuButtonUnselectedColor);
 			}
 
 			/*
@@ -90,10 +88,12 @@ public class OxideMenuButton extends JLabel {
 				if (action != null) {
 					action.actionPerformed(null);
 				}
+				OxideMenuButton.this.setBackground(OxidePalette.menuButtonSelectedColor);
 			}
 
 			@Override
 			public void mouseReleased (MouseEvent e) {
+				OxideMenuButton.this.setBackground(OxidePalette.menuButtonUnselectedColor);
 			}
 			
 		});

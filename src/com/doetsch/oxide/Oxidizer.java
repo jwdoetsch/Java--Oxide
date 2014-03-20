@@ -24,7 +24,7 @@ public class Oxidizer {
 	 *  
 	 * @param component the JComponent to style
 	 */
-	public static void oxidize (JComponent component) {
+	public static JComponent oxidize (JComponent component) {
 		
 		/*
 		 * If the JComponent is a control component then apply
@@ -38,6 +38,7 @@ public class Oxidizer {
 			component.setForeground(OxidePalette.oxideControlFontColor);
 		}
 		
+		return component;
 	}
 	
 	/**
