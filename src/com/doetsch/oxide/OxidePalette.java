@@ -64,6 +64,11 @@ public class OxidePalette {
 	public static final Font menuButtonFontFace = new Font("Monospaced", Font.BOLD, 20);
 	
 	/**
+	 * Defines the font color of OxideMenuButtons.
+	 */
+	public static final Color menuButtonFontColor = new Color(255, 255, 255);
+	
+	/**
 	 * Defines the background color of unselected Oxide menu buttons.
 	 */
 	public static final Color menuButtonSelectedColor = new Color(122, 138, 153);

@@ -41,9 +41,9 @@ public class OxideMenuButton extends JLabel {
 	 */
 	private void buildComponent () {
 		this.setOpaque(true);
-		this.setBackground(OxidePalette.decorationBorderColor);
-		this.setForeground(OxidePalette.oxideControlFontColor);
-		this.setFont(OxidePalette.oxideControlFontFace);
+		this.setBackground(OxidePalette.menuButtonUnselectedColor);
+		this.setForeground(OxidePalette.menuButtonFontColor);
+		this.setFont(OxidePalette.menuButtonFontFace);
 		this.setHorizontalAlignment(JLabel.CENTER);
 		this.setVerticalAlignment(JLabel.CENTER);
 	}
@@ -69,6 +69,7 @@ public class OxideMenuButton extends JLabel {
 			@Override
 			public void mouseEntered (MouseEvent e) {
 				OxideMenuButton.this.setBorder(OxidePalette.buttonHoverBorder);
+				OxideMenuButton.this.setBackground(OxidePalette.menuButtonSelectedColor);
 			}
 
 			/*
@@ -78,6 +79,7 @@ public class OxideMenuButton extends JLabel {
 			@Override
 			public void mouseExited (MouseEvent e) {
 				OxideMenuButton.this.setBorder(null);
+				OxideMenuButton.this.setBackground(OxidePalette.menuButtonUnselectedColor);
 			}
 
 			/*

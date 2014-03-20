@@ -316,6 +316,8 @@ public class OxideFrame extends JFrame {
 			 */
 			miniLabel = new OxideMenuButton("");
 			miniLabel.setIcon(new ImageIcon((isParentFrame ? "minimize_icon_24x24.png" : "minimize_icon_18x18.png")));
+			//miniLabel.setBackground(OxidePalette.decorationBorderColor);
+			miniLabel.setOpaque(false);
 			miniLabel.setActionListener(new AbstractAction() {
 
 				@Override
@@ -330,6 +332,8 @@ public class OxideFrame extends JFrame {
 			 */
 			exitLabel = new OxideMenuButton("");
 			exitLabel.setIcon(new ImageIcon((isParentFrame ? "close_icon_24x24.png" : "close_icon_18x18.png")));
+			//exitLabel.setBackground(OxidePalette.decorationBorderColor);
+			exitLabel.setOpaque(false);
 			exitLabel.setActionListener(new AbstractAction() {
 
 				@Override
