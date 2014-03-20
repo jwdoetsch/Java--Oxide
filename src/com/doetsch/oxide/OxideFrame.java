@@ -2,12 +2,15 @@ package com.doetsch.oxide;
 
 import java.awt.Cursor;
 import java.awt.EventQueue;
+import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,56 +28,68 @@ import javax.swing.border.LineBorder;
 public class OxideFrame extends JFrame {
 	
 
-	/*
-	 * Draws a white border around the given JLabel when the
-	 * mouse cursor is hovering over it. 
-	 */
-	private class LabelHoverListener implements MouseListener {
-		
-		//The label to pant the border around
-		private JLabel label;
-		
-		/*
-		 * Creates a LabelHoverListener instance that will draw a border 
-		 * around the given JLabel. 
-		 */
-		private LabelHoverListener (JLabel label) {
-			this.label = label;
-		}
-		
-		@Override
-		public void mouseClicked (MouseEvent arg0) {
-		}
-
-		/*
-		 * Sets the JLabel's border to the default line border when
-		 * the mouse cursor is hovered over it.
-		 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
-		 */
-		@Override
-		public void mouseEntered (MouseEvent arg0) {
-			label.setBorder(lineBorder);;
-		}
-
-		/*
-		 * Removes the border from the JLabel once the mouse stops hovering
-		 * over it.
-		 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
-		 */
-		@Override
-		public void mouseExited (MouseEvent arg0) {
-			label.setBorder(null);
-		}
-
-		@Override
-		public void mousePressed (MouseEvent arg0) {
-		}
-
-		@Override
-		public void mouseReleased (MouseEvent arg0) {
-		}
-	}
-	
+//	/*
+//	 * Draws a white border around the given JLabel when the
+//	 * mouse cursor is hovering over it. 
+//	 */
+//	private class LabelHoverListener implements MouseListener {
+//		
+//		//The label to pant the border around
+//		private JLabel label;
+//		
+//		//The action to undertake when the mouse clicks the component
+//		private AbstractAction onClickAction;
+//		
+//		/*
+//		 * Creates a LabelHoverListener instance that will draw a border 
+//		 * around the given JLabel. 
+//		 */
+//		private LabelHoverListener (JLabel label, AbstractAction onClickAction) {
+//			this.label = label;
+//			this.onClickAction = onClickAction;
+//		}
+//		
+//
+//
+//		/*
+//		 * Sets the JLabel's border to the default line border when
+//		 * the mouse cursor is hovered over it.
+//		 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+//		 */
+//		@Override
+//		public void mouseEntered (MouseEvent arg0) {
+//			label.setBorder(lineBorder);;
+//		}
+//
+//		/*
+//		 * Removes the border from the JLabel once the mouse stops hovering
+//		 * over it.
+//		 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+//		 */
+//		@Override
+//		public void mouseExited (MouseEvent arg0) {
+//			label.setBorder(null);
+//		}
+//
+//		@Override
+//		public void mouseClicked (MouseEvent arg0) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//		
+//		@Override
+//		public void mousePressed (MouseEvent arg0) {
+//		}
+//
+//		@Override
+//		public void mouseReleased (MouseEvent arg0) {
+//		}
+//
+//
+//
+//
+//	}
+//	
 	/**
 	 * DragAnchorLabel is the implementation of a JLabel that acts as
 	 * a drag anchor point for the frame to allow the position of the 
@@ -98,8 +113,8 @@ public class OxideFrame extends JFrame {
 		 * 
 		 * @param text a String representation of the label's text
 		 */
-		private DragAnchorLabel (String text) {
-			super(text);
+		private DragAnchorLabel () {
+			super();
 			
 			build();		
 		}
@@ -207,8 +222,8 @@ public class OxideFrame extends JFrame {
 	 * Title bar components
 	 */
 	private DragAnchorLabel titleLabel;
-	private JLabel miniLabel;
-	private JLabel exitLabel;
+	private OxideMenuButton miniLabel;
+	private OxideMenuButton exitLabel;
 	
 	/*
 	 * Declare and instantiate LabelHoverListener border
@@ -256,7 +271,8 @@ public class OxideFrame extends JFrame {
 		}
 		
 		initFrame();
-		resizeFrame();		
+		initBehavior();
+		resizeFrame();	
 				
 	}
 	
@@ -288,7 +304,7 @@ public class OxideFrame extends JFrame {
 			/*
 			 * The title label
 			 */
-			titleLabel = new DragAnchorLabel(" Title");
+			titleLabel = new DragAnchorLabel();
 			titleLabel.setVerticalAlignment(JLabel.CENTER);
 			titleLabel.setFont((isParentFrame) ? OxidePalette.titleFontFace : OxidePalette.subFrameTitleFontFace);
 			titleLabel.setForeground((isParentFrame) ? OxidePalette.titleFontColor : OxidePalette.subFrameTitleFontColor);
@@ -296,26 +312,32 @@ public class OxideFrame extends JFrame {
 			titleLabel.setOpaque(true);
 			
 			/*
-			 * The minimize label/icon
+			 * The minimize button
 			 */
-			miniLabel = new JLabel();
-			miniLabel.setBackground(OxidePalette.decorationBorderColor);
-			miniLabel.setOpaque(true);
-			miniLabel.setHorizontalAlignment(JLabel.CENTER);
-			miniLabel.setVerticalAlignment(JLabel.CENTER);
-			miniLabel.setIcon(new ImageIcon("minimize_icon_24x24.png"));
-			miniLabel.addMouseListener(new LabelHoverListener(miniLabel));
+			miniLabel = new OxideMenuButton("");
+			miniLabel.setIcon(new ImageIcon((isParentFrame ? "minimize_icon_24x24.png" : "minimize_icon_18x18.png")));
+			miniLabel.setActionListener(new AbstractAction() {
+
+				@Override
+				public void actionPerformed (ActionEvent arg0) {
+					OxideFrame.this.setExtendedState(JFrame.ICONIFIED);
+				}
+				
+			});
 			
 			/*
-			 * Exit label/icon
+			 * Exit button
 			 */
-			exitLabel = new JLabel();
-			exitLabel.setBackground(OxidePalette.decorationBorderColor);
-			exitLabel.setOpaque(true);
-			exitLabel.setHorizontalAlignment(JLabel.CENTER);
-			exitLabel.setVerticalAlignment(JLabel.CENTER);
-			exitLabel.setIcon(new ImageIcon("close_icon_24x24.png"));
-			exitLabel.addMouseListener(new LabelHoverListener(exitLabel));
+			exitLabel = new OxideMenuButton("");
+			exitLabel.setIcon(new ImageIcon((isParentFrame ? "close_icon_24x24.png" : "close_icon_18x18.png")));
+			exitLabel.setActionListener(new AbstractAction() {
+
+				@Override
+				public void actionPerformed (ActionEvent e) {
+					OxideFrame.this.dispose();
+				}
+				
+			});
 			
 			decorationPane.add(titleLabel);
 			decorationPane.add(miniLabel);
@@ -335,6 +357,10 @@ public class OxideFrame extends JFrame {
 		
 		
 	}
+	
+	private void initBehavior () {
+		
+	}	
 	
 	/*
 	 * Resizes the decorating frame components with respect to the
@@ -418,6 +444,12 @@ public class OxideFrame extends JFrame {
 		resizeFrame();		
 	}
 	
+	@Override
+	public void setTitle (String title) {
+		super.setTitle(title);
+		titleLabel.setText(" " + title);
+	}
+	
 	/**
 	 * Test case: instantiates a frame of default size (no setBounds() call) and
 	 * makes it visible.
@@ -431,7 +463,8 @@ public class OxideFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run () {
 				try {
-					OxideFrame frame = new OxideFrame(false);
+					OxideFrame frame = new OxideFrame(true);
+					frame.setTitle("dfScan Title");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
