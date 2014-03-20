@@ -28,68 +28,6 @@ import javax.swing.border.LineBorder;
 public class OxideFrame extends JFrame {
 	
 
-//	/*
-//	 * Draws a white border around the given JLabel when the
-//	 * mouse cursor is hovering over it. 
-//	 */
-//	private class LabelHoverListener implements MouseListener {
-//		
-//		//The label to pant the border around
-//		private JLabel label;
-//		
-//		//The action to undertake when the mouse clicks the component
-//		private AbstractAction onClickAction;
-//		
-//		/*
-//		 * Creates a LabelHoverListener instance that will draw a border 
-//		 * around the given JLabel. 
-//		 */
-//		private LabelHoverListener (JLabel label, AbstractAction onClickAction) {
-//			this.label = label;
-//			this.onClickAction = onClickAction;
-//		}
-//		
-//
-//
-//		/*
-//		 * Sets the JLabel's border to the default line border when
-//		 * the mouse cursor is hovered over it.
-//		 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
-//		 */
-//		@Override
-//		public void mouseEntered (MouseEvent arg0) {
-//			label.setBorder(lineBorder);;
-//		}
-//
-//		/*
-//		 * Removes the border from the JLabel once the mouse stops hovering
-//		 * over it.
-//		 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
-//		 */
-//		@Override
-//		public void mouseExited (MouseEvent arg0) {
-//			label.setBorder(null);
-//		}
-//
-//		@Override
-//		public void mouseClicked (MouseEvent arg0) {
-//			// TODO Auto-generated method stub
-//			
-//		}
-//		
-//		@Override
-//		public void mousePressed (MouseEvent arg0) {
-//		}
-//
-//		@Override
-//		public void mouseReleased (MouseEvent arg0) {
-//		}
-//
-//
-//
-//
-//	}
-//	
 	/**
 	 * DragAnchorLabel is the implementation of a JLabel that acts as
 	 * a drag anchor point for the frame to allow the position of the 
@@ -320,6 +258,9 @@ public class OxideFrame extends JFrame {
 			miniLabel.setOpaque(false);
 			miniLabel.setActionListener(new AbstractAction() {
 
+				/*
+				 * Minimizes the frame when the minimize button is selected
+				 */
 				@Override
 				public void actionPerformed (ActionEvent arg0) {
 					OxideFrame.this.setExtendedState(JFrame.ICONIFIED);
@@ -336,6 +277,9 @@ public class OxideFrame extends JFrame {
 			exitLabel.setOpaque(false);
 			exitLabel.setActionListener(new AbstractAction() {
 
+				/*
+				 * Disposes the frame when the close button is selected
+				 */
 				@Override
 				public void actionPerformed (ActionEvent e) {
 					OxideFrame.this.dispose();
