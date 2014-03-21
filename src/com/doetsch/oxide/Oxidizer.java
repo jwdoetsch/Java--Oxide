@@ -1,6 +1,11 @@
 package com.doetsch.oxide;
 
 import javax.swing.JButton;
+
+
+
+
+
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -26,6 +31,9 @@ public class Oxidizer {
 	 */
 	public static JComponent oxidize (JComponent component) {
 		
+		component.setFont(OxidePalette.oxideControlFontFace);
+		component.setForeground(OxidePalette.oxideControlFontColor);
+		
 		/*
 		 * If the JComponent is a control component then apply
 		 * the Oxide control component font face and color
@@ -34,8 +42,14 @@ public class Oxidizer {
 			(component instanceof JLabel) ||
 			(component instanceof JCheckBox) ||
 			(component instanceof JComboBox)) {
-			component.setFont(OxidePalette.oxideControlFontFace);
-			component.setForeground(OxidePalette.oxideControlFontColor);
+//			component.setFont(OxidePalette.oxideControlFontFace);
+//			component.setForeground(OxidePalette.oxideControlFontColor);
+			
+		} else if (component instanceof JPanel) {
+			component.setLayout(null);
+			component.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED), "",
+					TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION,
+					OxidePalette.oxideControlFontFace, OxidePalette.oxideControlFontColor));
 		}
 		
 		return component;
