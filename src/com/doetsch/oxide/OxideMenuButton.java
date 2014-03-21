@@ -21,7 +21,7 @@ public class OxideMenuButton extends JLabel {
 	 * Satisfies Serializable 
 	 */
 	private static final long serialVersionUID = 2008351390536732476L;
-	
+	private boolean isSelected;
 	private AbstractAction action;	
 	
 	/**
@@ -34,6 +34,8 @@ public class OxideMenuButton extends JLabel {
 		
 		buildComponent();
 		initBehavior();
+		
+		
 	}
 	
 	/*
@@ -41,6 +43,7 @@ public class OxideMenuButton extends JLabel {
 	 */
 	private void buildComponent () {
 		this.setOpaque(true);
+		isSelected = false;
 		this.setBackground(OxidePalette.menuButtonUnselectedColor);
 		this.setForeground(OxidePalette.menuButtonFontColor);
 		this.setFont(OxidePalette.menuButtonFontFace);
@@ -88,12 +91,12 @@ public class OxideMenuButton extends JLabel {
 				if (action != null) {
 					action.actionPerformed(null);
 				}
-				OxideMenuButton.this.setBackground(OxidePalette.menuButtonSelectedColor);
+				
+				setSelected (true);
 			}
 
 			@Override
 			public void mouseReleased (MouseEvent e) {
-				OxideMenuButton.this.setBackground(OxidePalette.menuButtonUnselectedColor);
 			}
 			
 		});
@@ -107,6 +110,24 @@ public class OxideMenuButton extends JLabel {
 	 */
 	public void setActionListener (AbstractAction action) {
 		this.action = action; 
+	}
+	
+	/**
+	 * 
+	 */
+	public boolean isSelected () {
+		return this.isSelected;
+	}
+	
+	public void setSelected (boolean isSelected) {
+		this.isSelected = isSelected;
+		
+		if (isSelected) {
+			OxideMenuButton.this.setBackground(OxidePalette.menuButtonSelectedColor);
+		} else {
+			OxideMenuButton.this.setBackground(OxidePalette.menuButtonUnselectedColor);
+		}
+		
 	}
 	
 }
