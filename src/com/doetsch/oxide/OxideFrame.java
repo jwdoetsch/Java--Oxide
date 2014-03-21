@@ -253,7 +253,7 @@ public class OxideFrame extends JFrame {
 			 * The minimize button
 			 */
 			miniLabel = new OxideMenuButton("");
-			miniLabel.setIcon(new ImageIcon((isParentFrame ? "minimize_icon_24x24.png" : "minimize_icon_18x18.png")));
+			miniLabel.setIcon(new ImageIcon(ClassLoader.getSystemClassLoader().getSystemResource((isParentFrame ? "minimize_icon_24x24.png" : "minimize_icon_18x18.png"))));
 			//miniLabel.setBackground(OxidePalette.decorationBorderColor);
 			miniLabel.setOpaque(false);
 			miniLabel.setActionListener(new AbstractAction() {
@@ -272,7 +272,7 @@ public class OxideFrame extends JFrame {
 			 * Exit button
 			 */
 			exitLabel = new OxideMenuButton("");
-			exitLabel.setIcon(new ImageIcon((isParentFrame ? "close_icon_24x24.png" : "close_icon_18x18.png")));
+			exitLabel.setIcon(new ImageIcon(ClassLoader.getSystemClassLoader().getSystemResource((isParentFrame ? "close_icon_24x24.png" : "close_icon_18x18.png"))));
 			//exitLabel.setBackground(OxidePalette.decorationBorderColor);
 			exitLabel.setOpaque(false);
 			exitLabel.setActionListener(new AbstractAction() {
