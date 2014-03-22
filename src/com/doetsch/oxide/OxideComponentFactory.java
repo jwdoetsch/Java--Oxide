@@ -3,9 +3,12 @@ package com.doetsch.oxide;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
@@ -27,8 +30,7 @@ public class OxideComponentFactory {
 	public JButton createButton () {
 		
 		JButton button = new JButton();
-		button.setFont(OxidePalette.oxideControlFontFace);
-		button.setForeground(OxidePalette.oxideControlFontColor);
+		applyControlComponentDefaults(button);
 		
 		return button;
 	}
@@ -42,8 +44,7 @@ public class OxideComponentFactory {
 	public JComboBox<String> createComboBox () {
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setFont(OxidePalette.oxideControlFontFace);
-		comboBox.setForeground(OxidePalette.oxideControlFontColor);
+		applyControlComponentDefaults(comboBox);
 		
 		return comboBox;
 	}
@@ -58,8 +59,7 @@ public class OxideComponentFactory {
 	public JPanel createTitledPanel (String title) {
 		
 		JPanel panel = new JPanel();
-		panel.setFont(OxidePalette.oxideControlFontFace);
-		panel.setForeground(OxidePalette.oxideControlFontColor);
+		applyControlComponentDefaults(panel);
 		panel.setLayout(null);
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED), title,
 				TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION,
@@ -77,8 +77,7 @@ public class OxideComponentFactory {
 	public JLabel createLabel (String text) {
 		
 		JLabel label = new JLabel(text);
-		label.setFont(OxidePalette.oxideControlFontFace);
-		label.setForeground(OxidePalette.oxideControlFontColor);
+		applyControlComponentDefaults(label);
 		
 		return label;
 	}
@@ -91,24 +90,58 @@ public class OxideComponentFactory {
 	public JRadioButton createRadioButton () {
 		
 		JRadioButton radioButton = new JRadioButton();
-		radioButton.setFont(OxidePalette.oxideControlFontFace);
-		radioButton.setForeground(OxidePalette.oxideControlFontColor);
+		applyControlComponentDefaults(radioButton);
 		
 		return radioButton;
 	}
 	
 	/**
-	 * Creates a JCheckBox instance that adheres to the Oxide aesthetic
+	 * Creates a JCheckBox instance that adheres to the Oxide aesthetic.
 	 * 
 	 * @return the new JCheckBox instance
 	 */
 	public JCheckBox createCheckBox () {
 		
 		JCheckBox checkBox = new JCheckBox();
-		checkBox.setFont(OxidePalette.oxideControlFontFace);
-		checkBox.setForeground(OxidePalette.oxideControlFontColor);
+		applyControlComponentDefaults(checkBox);
 		
 		return checkBox;
+	}
+	
+	/**
+	 * Creates a JTextField instance that adheres to the Oxide aesthetic.
+	 * 
+	 * @return the new JTextField instance
+	 */
+	public JTextField createTextField () {
+		
+		JTextField textField = new JTextField();
+		applyControlComponentDefaults(textField);
+		
+		return textField;
+	}
+	
+	/**
+	 * Creates  JTextArea instance that adheres to the Oxide aesthetic.
+	 * 
+	 * @return the new JTextArea instance
+	 */
+	public JTextArea createTextArea () {
+		
+		JTextArea textArea = new JTextArea();
+		applyControlComponentDefaults(textArea);
+		
+		return textArea;		
+	}
+	
+	/*
+	 * Applies the default control component font face and color. 
+	 */
+	private void applyControlComponentDefaults (JComponent component) {
+		
+		component.setFont(OxidePalette.oxideControlFontFace);
+		component.setForeground(OxidePalette.oxideControlFontColor);
+		
 	}
 	
 }
