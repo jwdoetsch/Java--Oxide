@@ -160,8 +160,8 @@ public class OxideFrame extends JFrame {
 	 * Title bar components
 	 */
 	private DragAnchorLabel titleLabel;
-	private OxideMenuButton miniLabel;
-	private OxideMenuButton exitLabel;
+	private OxideMenuButton minimizeButton;
+	private OxideMenuButton closeButton;
 	
 	/*
 	 * Declare and instantiate LabelHoverListener border
@@ -251,12 +251,12 @@ public class OxideFrame extends JFrame {
 			/*
 			 * The minimize button
 			 */
-			miniLabel = new OxideMenuButton("");
-			miniLabel.setIcon(new ImageIcon((isParentFrame ?
+			minimizeButton = new OxideMenuButton("");
+			minimizeButton.setIcon(new ImageIcon((isParentFrame ?
 					OxideFrame.class.getResource("icons/minimize_icon_24x24.png") :
 						OxideFrame.class.getResource("icons/minimize_icon_18x18.png"))));
-			miniLabel.setOpaque(false);
-			miniLabel.setActionListener(new AbstractAction() {
+			minimizeButton.setOpaque(false);
+			minimizeButton.setActionListener(new AbstractAction() {
 
 				/*
 				 * Minimizes the frame when the minimize button is selected
@@ -271,12 +271,12 @@ public class OxideFrame extends JFrame {
 			/*
 			 * Exit button
 			 */
-			exitLabel = new OxideMenuButton("");
-			exitLabel.setIcon(new ImageIcon((isParentFrame ? 
+			closeButton = new OxideMenuButton("");
+			closeButton.setIcon(new ImageIcon((isParentFrame ? 
 					OxideFrame.class.getResource("icons/close_icon_24x24.png") :
 						OxideFrame.class.getResource("icons/close_icon_18x18.png"))));
-			exitLabel.setOpaque(false);
-			exitLabel.setActionListener(new AbstractAction() {
+			closeButton.setOpaque(false);
+			closeButton.setActionListener(new AbstractAction() {
 
 				/*
 				 * Disposes the frame when the close button is selected
@@ -289,8 +289,8 @@ public class OxideFrame extends JFrame {
 			});
 			
 			decorationPane.add(titleLabel);
-			decorationPane.add(miniLabel);
-			decorationPane.add(exitLabel);
+			decorationPane.add(minimizeButton);
+			decorationPane.add(closeButton);
 			
 		}
 		
@@ -345,11 +345,11 @@ public class OxideFrame extends JFrame {
 					contentPaneWidth - (2 * titleLabelHeight),
 					titleLabelHeight + (2 * decorationBorderWidth));
 			
-			miniLabel.setBounds(contentPaneWidth - (2 * titleLabelHeight),
+			minimizeButton.setBounds(contentPaneWidth - (2 * titleLabelHeight),
 					decorationBorderWidth,
 					titleLabelHeight, titleLabelHeight);
 			
-			exitLabel.setBounds(contentPaneWidth + decorationBorderWidth - titleLabelHeight,
+			closeButton.setBounds(contentPaneWidth + decorationBorderWidth - titleLabelHeight,
 					decorationBorderWidth,
 					titleLabelHeight, titleLabelHeight);		
 			
@@ -403,6 +403,26 @@ public class OxideFrame extends JFrame {
 	public void setTitle (String title) {
 		super.setTitle(title);
 		titleLabel.setText(" " + title);
+	}
+	
+	/**
+	 * Sets the frame's minimize button's behavior when pressed.
+	 * 
+	 * @param action the AbstractAction defining the behavior when the
+	 * button is pressed
+	 */
+	public void setMinimizeButtonBehavior (AbstractAction action) {
+		minimizeButton.setActionListener(action);		
+	}
+	
+	/**
+	 * Sets the frame's close button's behavior when pressed.
+	 * 
+	 * @param action the AbstractAction defining the behavior when the
+	 * button is pressed
+	 */
+	public void setCloseButtonBehavior (AbstractAction action) {
+		closeButton.setActionListener(action);
 	}
 	
 	/**
