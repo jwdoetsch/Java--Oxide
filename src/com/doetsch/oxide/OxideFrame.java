@@ -216,6 +216,7 @@ public class OxideFrame extends JFrame {
 	private void initFrame () {
 		
 		super.setUndecorated(true);
+		super.setVisible(true);
 		
 		/*
 		 * Initialize and decorate the parent frame (window border)
@@ -336,12 +337,7 @@ public class OxideFrame extends JFrame {
 		 * Resize and reposition decoration pane components
 		 */
 		{
-//			titleLabel.setBounds(decorationBorderWidth,
-//					decorationBorderWidth,
-//					contentPaneWidth - (2 * decorationBorderWidth) - (2 * titleLabelHeight),
-//					titleLabelHeight);
-			titleLabel.setBounds(0,
-					0,
+			titleLabel.setBounds(0,	0,
 					contentPaneWidth - (2 * titleLabelHeight),
 					titleLabelHeight + (2 * decorationBorderWidth));
 			
@@ -440,7 +436,7 @@ public class OxideFrame extends JFrame {
 				try {
 					OxideFrame frame = new OxideFrame(true);
 					frame.setTitle("Oxide Frame Title");
-					frame.setVisible(true);
+					//frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

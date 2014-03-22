@@ -39,9 +39,9 @@ public class OxideComponentFactory {
 	 * 
 	 * @return the new JComboBox instance
 	 */
-	public JComboBox createComboBox () {
+	public JComboBox<String> createComboBox () {
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setFont(OxidePalette.oxideControlFontFace);
 		comboBox.setForeground(OxidePalette.oxideControlFontColor);
 		
