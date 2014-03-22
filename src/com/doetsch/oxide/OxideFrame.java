@@ -173,8 +173,8 @@ public class OxideFrame extends JFrame {
 	 */
 	private int contentPaneLeft = 300;
 	private int contentPaneTop = 100;
-	private int contentPaneWidth = 400;
-	private int contentPaneHeight = 300;
+	private int contentPaneWidth = 640;
+	private int contentPaneHeight = 380;
 	
 	/*
 	 * Decoration and frame border widths
@@ -193,8 +193,8 @@ public class OxideFrame extends JFrame {
 	 * Creates an OxideFrame instance.
 	 * 
 	 * @param isParentFrame true if the OxideFrame should be considered a
-	 * parent frame which has a title label height and font different from
-	 * a child frame.
+	 * parent frame which has a title label height (30px) and font different from
+	 * a child frame (18px).
 	 */
 	public OxideFrame (boolean isParentFrame) {
 		super();
@@ -210,7 +210,6 @@ public class OxideFrame extends JFrame {
 		
 		initFrame();
 		initBehavior();
-		resizeFrame();	
 				
 	}
 	
@@ -253,11 +252,9 @@ public class OxideFrame extends JFrame {
 			 * The minimize button
 			 */
 			miniLabel = new OxideMenuButton("");
-			//miniLabel.setIcon(new ImageIcon((isParentFrame ? "icons\\minimize_icon_24x24.png" : "icons\\minimize_icon_18x18.png")));
 			miniLabel.setIcon(new ImageIcon((isParentFrame ?
 					OxideFrame.class.getResource("icons/minimize_icon_24x24.png") :
 						OxideFrame.class.getResource("icons/minimize_icon_18x18.png"))));
-			//miniLabel.setBackground(OxidePalette.decorationBorderColor);
 			miniLabel.setOpaque(false);
 			miniLabel.setActionListener(new AbstractAction() {
 
@@ -275,11 +272,9 @@ public class OxideFrame extends JFrame {
 			 * Exit button
 			 */
 			exitLabel = new OxideMenuButton("");
-			//exitLabel.setIcon(new ImageIcon((isParentFrame ? "icons\\close_icon_24x24.png" : "icons\\close_icon_18x18.png")));
 			exitLabel.setIcon(new ImageIcon((isParentFrame ? 
 					OxideFrame.class.getResource("icons/close_icon_24x24.png") :
 						OxideFrame.class.getResource("icons/close_icon_18x18.png"))));
-			//exitLabel.setBackground(OxidePalette.decorationBorderColor);
 			exitLabel.setOpaque(false);
 			exitLabel.setActionListener(new AbstractAction() {
 
@@ -308,7 +303,7 @@ public class OxideFrame extends JFrame {
 		contentPane.setOpaque(true);
 		decorationPane.add(contentPane);
 		
-		
+		resizeFrame();
 		
 	}
 	
@@ -378,7 +373,7 @@ public class OxideFrame extends JFrame {
 	public JPanel getContentPane () {
 		return contentPane;
 	}
-
+	
 	/**
 	 * Sets the location and dimensions of the content pane.
 	 */
@@ -393,6 +388,8 @@ public class OxideFrame extends JFrame {
 	@Override
 	public void setBounds (int left, int top,
 			int contentPaneWidth, int contentPaneHeight) {
+		
+		//super.setBounds(left, top, 400, 300);
 		
 		this.contentPaneLeft = left;
 		this.contentPaneTop = top;
@@ -422,7 +419,7 @@ public class OxideFrame extends JFrame {
 			public void run () {
 				try {
 					OxideFrame frame = new OxideFrame(true);
-					frame.setTitle("dfScan Title");
+					frame.setTitle("Oxide Frame Title");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
