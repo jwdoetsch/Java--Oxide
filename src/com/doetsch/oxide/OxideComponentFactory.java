@@ -1,6 +1,7 @@
 package com.doetsch.oxide;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -83,7 +84,7 @@ public class OxideComponentFactory {
 	}
 
 	/**
-	 * Creates a JradioButton instance that adheres to the Oxide aesthetic
+	 * Creates a JRadioButton instance that adheres to the Oxide aesthetic
 	 * 
 	 * @return the new JRadioButton instance
 	 */
@@ -94,6 +95,20 @@ public class OxideComponentFactory {
 		radioButton.setForeground(OxidePalette.oxideControlFontColor);
 		
 		return radioButton;
+	}
+	
+	/**
+	 * Creates a JCheckBox instance that adheres to the Oxide aesthetic
+	 * 
+	 * @return the new JCheckBox instance
+	 */
+	public JCheckBox createCheckBox () {
+		
+		JCheckBox checkBox = new JCheckBox();
+		checkBox.setFont(OxidePalette.oxideControlFontFace);
+		checkBox.setForeground(OxidePalette.oxideControlFontColor);
+		
+		return checkBox;
 	}
 	
 }
