@@ -314,7 +314,11 @@ public class OxideFrame extends JFrame {
 		
 	}
 	
-	private void centerInViewport () {
+	/**
+	 * Updates the location of the OxideFrame such that the frame appears
+	 * centered within the screen. 
+	 */
+	public void centerInViewport () {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds ((screenSize.width / 2) - (contentPaneWidth / 2),
 				(screenSize.height / 2) - (contentPaneHeight / 2),
