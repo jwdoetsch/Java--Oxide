@@ -1,10 +1,12 @@
 package com.doetsch.oxide;
 
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -310,7 +312,14 @@ public class OxideFrame extends JFrame {
 	
 	private void initBehavior () {
 		
-	}	
+	}
+	
+	private void centerInViewport () {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setBounds ((screenSize.width / 2) - (contentPaneWidth / 2),
+				(screenSize.height / 2) - (contentPaneHeight / 2),
+				contentPaneWidth, contentPaneHeight);
+	}
 	
 	/*
 	 * Resizes the decorating frame components with respect to the
@@ -436,6 +445,7 @@ public class OxideFrame extends JFrame {
 				try {
 					OxideFrame frame = new OxideFrame(true);
 					frame.setTitle("Oxide Frame Title");
+					frame.centerInViewport();
 					//frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
