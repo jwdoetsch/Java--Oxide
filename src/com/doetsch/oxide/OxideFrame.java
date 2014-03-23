@@ -415,6 +415,15 @@ public class OxideFrame extends JFrame {
 	}
 	
 	/**
+	 * Returns the frame's minimize button's behavior when pressed.
+	 * 
+	 * @return the AbstractAction defining the behavior
+	 */
+	public AbstractAction getMinimizeButtonBehavior () {
+		return minimizeButton.getActionListener();
+	}
+	
+	/**
 	 * Sets the frame's minimize button's behavior when pressed.
 	 * 
 	 * @param action the AbstractAction defining the behavior when the
@@ -422,6 +431,15 @@ public class OxideFrame extends JFrame {
 	 */
 	public void setMinimizeButtonBehavior (AbstractAction action) {
 		minimizeButton.setActionListener(action);		
+	}
+	
+	/**
+	 * Retur ns the frame's close button's behavior when pressed.
+	 * 
+	 * @return the AbstractAction defining the behavior
+	 */
+	public AbstractAction getCloseButtonBehavior () {
+		return closeButton.getActionListener();
 	}
 	
 	/**

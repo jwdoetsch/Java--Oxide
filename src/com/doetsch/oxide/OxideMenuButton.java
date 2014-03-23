@@ -104,6 +104,15 @@ public class OxideMenuButton extends JLabel {
 	}
 	
 	/**
+	 * Returns the action invoked when the button is pressed.
+	 * 
+	 * @return the AbstractAction invoked whent he button is pressed
+	 */
+	public AbstractAction getActionListener () {
+		return action;
+	}
+	
+	/**
 	 * Sets the action to invoke when the button is pressed.
 	 * 
 	 * @param action the AbstractAction to invoke
