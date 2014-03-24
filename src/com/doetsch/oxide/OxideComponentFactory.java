@@ -5,6 +5,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -122,7 +123,7 @@ public class OxideComponentFactory {
 	}
 	
 	/**
-	 * Creates  JTextArea instance that adheres to the Oxide aesthetic.
+	 * Creates a JTextArea instance that adheres to the Oxide aesthetic.
 	 * 
 	 * @return the new JTextArea instance
 	 */
@@ -132,6 +133,19 @@ public class OxideComponentFactory {
 		applyControlComponentDefaults(textArea);
 		
 		return textArea;		
+	}
+	
+	/**
+	 * Creates a JList instance that adheres to the Oxide aesthetic.
+	 * 
+	 * @return the new JList instance
+	 */
+	public JList createList () {
+		
+		JList list = new JList();
+		applyControlComponentDefaults(list);
+		
+		return list;
 	}
 	
 	/*
