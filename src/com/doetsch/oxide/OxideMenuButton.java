@@ -22,14 +22,17 @@ public class OxideMenuButton extends JLabel {
 	private static final long serialVersionUID = 2008351390536732476L;
 	private boolean isSelected;
 	private AbstractAction action;	
+	private OxideSkin skin;
 	
 	/**
 	 * Creates an OxideMenuButton with the given text.
 	 * 
 	 * @param text a String representation of the button's text label
 	 */
-	public OxideMenuButton (String text) {
+	public OxideMenuButton (String text, OxideSkin skin) {
 		super.setText(text);
+		
+		this.skin = skin;
 		
 		buildComponent();
 		initBehavior();
@@ -43,9 +46,9 @@ public class OxideMenuButton extends JLabel {
 	private void buildComponent () {
 		this.setOpaque(true);
 		isSelected = false;
-		this.setBackground(OxidePalette.menuButtonUnselectedColor);
-		this.setForeground(OxidePalette.menuButtonFontColor);
-		this.setFont(OxidePalette.menuButtonFontFace);
+		this.setBackground(skin.getMenuButtonUnselectedColor());
+		this.setForeground(skin.getMenuButtonFontColor());
+		this.setFont(skin.getMenuButtonFontFace());
 		this.setHorizontalAlignment(JLabel.CENTER);
 		this.setVerticalAlignment(JLabel.CENTER);
 	}
@@ -70,7 +73,7 @@ public class OxideMenuButton extends JLabel {
 			 */
 			@Override
 			public void mouseEntered (MouseEvent e) {
-				OxideMenuButton.this.setBorder(OxidePalette.buttonHoverBorder);
+				OxideMenuButton.this.setBorder(skin.getButtonHoverBorder());
 			}
 
 			/*
@@ -131,9 +134,9 @@ public class OxideMenuButton extends JLabel {
 		this.isSelected = isSelected;
 		
 		if (isSelected) {
-			OxideMenuButton.this.setBackground(OxidePalette.menuButtonSelectedColor);
+			OxideMenuButton.this.setBackground(skin.getMenuButtonSelectedColor());
 		} else {
-			OxideMenuButton.this.setBackground(OxidePalette.menuButtonUnselectedColor);
+			OxideMenuButton.this.setBackground(skin.getMenuButtonUnselectedColor());
 		}
 		
 	}

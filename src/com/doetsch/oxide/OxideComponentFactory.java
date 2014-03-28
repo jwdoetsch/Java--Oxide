@@ -21,6 +21,11 @@ import javax.swing.border.TitledBorder;
  */
 public class OxideComponentFactory {
 
+	private OxideSkin skin;
+	
+	public OxideComponentFactory (OxideSkin skin) {
+		this.skin = skin;
+	}
 	
 	/**
 	 * Creates a JButton instance that applies Oxide decoration as to
@@ -64,7 +69,7 @@ public class OxideComponentFactory {
 		panel.setLayout(null);
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED), title,
 				TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION,
-				OxidePalette.oxideControlFontFace, OxidePalette.oxideControlFontColor));
+				skin.getControlFontFace(), skin.getControlFontColor()));
 		
 		return panel;
 	}
@@ -153,8 +158,8 @@ public class OxideComponentFactory {
 	 */
 	private void applyControlComponentDefaults (JComponent component) {
 		
-		component.setFont(OxidePalette.oxideControlFontFace);
-		component.setForeground(OxidePalette.oxideControlFontColor);
+		component.setFont(skin.getControlFontFace());
+		component.setForeground(skin.getControlFontColor());
 		
 	}
 	

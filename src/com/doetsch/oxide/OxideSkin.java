@@ -87,7 +87,7 @@ public interface OxideSkin {
 	/**
 	 * @return
 	 */
-	public Color getMenubuttonUnselectedColor ();
+	public Color getMenuButtonUnselectedColor ();
 	
 	/**
 	 * @return

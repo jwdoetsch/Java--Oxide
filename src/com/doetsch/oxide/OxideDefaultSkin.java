@@ -146,7 +146,7 @@ public class OxideDefaultSkin implements OxideSkin {
 	 * @see com.doetsch.oxide.OxideSkin#getMenubuttonUnselectedColor()
 	 */
 	@Override
-	public Color getMenubuttonUnselectedColor () {
+	public Color getMenuButtonUnselectedColor () {
 		return new Color(163, 184, 204);
 	}
 	

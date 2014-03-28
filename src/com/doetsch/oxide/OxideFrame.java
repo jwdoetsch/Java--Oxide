@@ -260,7 +260,7 @@ public class OxideFrame extends JFrame {
 			/*
 			 * The minimize button
 			 */
-			minimizeButton = new OxideMenuButton("");
+			minimizeButton = new OxideMenuButton("", skin);
 			minimizeButton.setIcon(new ImageIcon((isParentFrame ?
 					OxideFrame.class.getResource("resources/icons/minimize_icon_24x24.png") :
 						OxideFrame.class.getResource("resources/icons/minimize_icon_18x18.png"))));
@@ -270,7 +270,7 @@ public class OxideFrame extends JFrame {
 			/*
 			 * Exit button
 			 */
-			closeButton = new OxideMenuButton("");
+			closeButton = new OxideMenuButton("", skin);
 			closeButton.setIcon(new ImageIcon((isParentFrame ? 
 					OxideFrame.class.getResource("resources/icons/close_icon_24x24.png") :
 						OxideFrame.class.getResource("resources/icons/close_icon_18x18.png"))));
