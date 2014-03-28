@@ -215,6 +215,9 @@ public class OxideFrame extends JFrame {
 				
 	}
 	
+	/*
+	 * Initializes and builds the Oxide frame's decoration
+	 */
 	private void initFrame () {
 		
 		super.setUndecorated(true);
@@ -237,6 +240,7 @@ public class OxideFrame extends JFrame {
 		decorationPane.setOpaque(true);
 		framePane.add(decorationPane);
 		
+		
 		/*
 		 * Initialize decoration pane components
 		 */
@@ -256,40 +260,20 @@ public class OxideFrame extends JFrame {
 			 */
 			minimizeButton = new OxideMenuButton("");
 			minimizeButton.setIcon(new ImageIcon((isParentFrame ?
-					OxideFrame.class.getResource("icons/minimize_icon_24x24.png") :
-						OxideFrame.class.getResource("icons/minimize_icon_18x18.png"))));
+					OxideFrame.class.getResource("resources/icons/minimize_icon_24x24.png") :
+						OxideFrame.class.getResource("resources/icons/minimize_icon_18x18.png"))));
 			minimizeButton.setOpaque(false);
-			minimizeButton.setActionListener(new AbstractAction() {
 
-				/*
-				 * Minimizes the frame when the minimize button is selected
-				 */
-				@Override
-				public void actionPerformed (ActionEvent arg0) {
-					OxideFrame.this.setExtendedState(JFrame.ICONIFIED);
-				}
-				
-			});
 			
 			/*
 			 * Exit button
 			 */
 			closeButton = new OxideMenuButton("");
 			closeButton.setIcon(new ImageIcon((isParentFrame ? 
-					OxideFrame.class.getResource("icons/close_icon_24x24.png") :
-						OxideFrame.class.getResource("icons/close_icon_18x18.png"))));
+					OxideFrame.class.getResource("resources/icons/close_icon_24x24.png") :
+						OxideFrame.class.getResource("resources/icons/close_icon_18x18.png"))));
 			closeButton.setOpaque(false);
-			closeButton.setActionListener(new AbstractAction() {
-
-				/*
-				 * Disposes the frame when the close button is selected
-				 */
-				@Override
-				public void actionPerformed (ActionEvent e) {
-					OxideFrame.this.dispose();
-				}
-				
-			});
+			
 			
 			decorationPane.add(titleLabel);
 			decorationPane.add(minimizeButton);
@@ -306,11 +290,44 @@ public class OxideFrame extends JFrame {
 		contentPane.setOpaque(true);
 		decorationPane.add(contentPane);
 		
+		/*
+		 * Draw the frame for the first time
+		 */
 		resizeFrame();
 		
 	}
 	
 	private void initBehavior () {
+		
+		/*
+		 * Define the default frame close button operation
+		 */
+		closeButton.setActionListener(new AbstractAction() {
+
+			/*
+			 * Disposes the frame when the close button is selected
+			 */
+			@Override
+			public void actionPerformed (ActionEvent e) {
+				OxideFrame.this.dispose();
+			}
+			
+		});
+		
+		/*
+		 * Define the default frame minimize operation
+		 */
+		minimizeButton.setActionListener(new AbstractAction() {
+
+			/*
+			 * Minimizes the frame when the minimize button is selected
+			 */
+			@Override
+			public void actionPerformed (ActionEvent arg0) {
+				OxideFrame.this.setExtendedState(JFrame.ICONIFIED);
+			}
+			
+		});
 		
 	}
 	

@@ -42,9 +42,9 @@ public class OxideComponentFactory {
 	 * 
 	 * @return the new JComboBox instance
 	 */
-	public JComboBox<String> createComboBox () {
+	public JComboBox createComboBox () {
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
+		JComboBox comboBox = new JComboBox();
 		applyControlComponentDefaults(comboBox);
 		
 		return comboBox;
