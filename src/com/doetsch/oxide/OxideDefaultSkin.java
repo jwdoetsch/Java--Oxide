@@ -32,7 +32,7 @@ public class OxideDefaultSkin implements OxideSkin {
 	 * @see com.doetsch.oxide.OxideSkin#getFrameBorderColor()
 	 */
 	public int getFrameBorderWidth () {
-		return 2;
+		return 1;
 	}
 	
 
@@ -57,7 +57,7 @@ public class OxideDefaultSkin implements OxideSkin {
 	 */
 	@Override
 	public Color getFrameBorderColor () {
-		return new Color(151, 151, 151);
+		return new Color(51, 51, 51);
 	}
 	
 	/* (non-Javadoc)

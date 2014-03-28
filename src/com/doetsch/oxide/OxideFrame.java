@@ -395,7 +395,7 @@ public class OxideFrame extends JFrame {
 	/**
 	 * Returns the content pane of the OxideFrame
 	 * 
-	 * @return the JPanel content pane of the frame
+	 * @return a JPanel representation of the content pane
 	 */
 	@Override
 	public JPanel getContentPane () {
@@ -404,6 +404,10 @@ public class OxideFrame extends JFrame {
 	
 	/**
 	 * Sets the location and dimensions of the content pane.
+	 * 
+	 * @param r a Rectangle representation of the x and y position
+	 * of the top-left corner of the frame's content pane and the
+	 * content pane's width and height 
 	 */
 	@Override
 	public void setBounds (Rectangle r) {
@@ -412,6 +416,11 @@ public class OxideFrame extends JFrame {
 	
 	/**
 	 * Sets the location and dimensions of the content pane.
+	 * 
+	 * @param left the new x position of the top-left corner of the frame's content pane
+	 * @param top the new y position of the top-left corner of the frame's content pane
+	 * @param contentPaneWidth the new width of the frame's content pane 
+	 * @param contentPaneHeight the new height of the frame's content pane
 	 */
 	@Override
 	public void setBounds (int left, int top,
@@ -427,6 +436,10 @@ public class OxideFrame extends JFrame {
 		resizeFrame();		
 	}
 	
+	/**
+	 * Sets the frame's title text.
+	 * @param title a String representation of the title
+	 */
 	@Override
 	public void setTitle (String title) {
 		super.setTitle(title);
@@ -471,10 +484,21 @@ public class OxideFrame extends JFrame {
 		closeButton.setActionListener(action);
 	}
 	
+	/**
+	 * Returns the OxideSkin that is decorating the frame.
+	 * 
+	 * @return the OxideSkin that's decorating the frame
+	 */
 	public OxideSkin getOxideSkin () {
 		return this.skin;		
 	}
 	
+	/**
+	 * Sets the OxideSkin that will decorate the frame and it's components.
+	 * 
+	 * @param skin an OxideSkin that defines the palette with which
+	 * to decorate the frame and it's components
+	 */
 	public void setOxideSkin (OxideSkin skin) {
 		this.skin = skin;
 		initFrame();
