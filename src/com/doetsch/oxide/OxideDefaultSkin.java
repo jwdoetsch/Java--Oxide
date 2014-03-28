@@ -185,7 +185,7 @@ public class OxideDefaultSkin implements OxideSkin {
 	}
 
 	@Override
-	public Color getOxideShade1 () {
+	public Color getShadeColor1 () {
 		return new Color(219, 229, 239);
 	}
 
