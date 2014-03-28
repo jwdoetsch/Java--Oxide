@@ -168,7 +168,7 @@ public class OxideFrame extends JFrame {
 	/*
 	 * Declare and instantiate LabelHoverListener border
 	 */
-	private LineBorder lineBorder = new LineBorder(OxidePalette.mouseHoverBorderColor);
+	//private LineBorder lineBorder = new LineBorder(bbbb.mouseHoverBorderColor);
 		
 	/*
 	 * Content pane dimensions
@@ -178,18 +178,20 @@ public class OxideFrame extends JFrame {
 	private int contentPaneWidth = 640;
 	private int contentPaneHeight = 380;
 	
-	/*
-	 * Decoration and frame border widths
-	 */
-	private int decorationBorderWidth  = 6;
-	private int frameBorderWidth = 1;
-
-	/*
-	 * Height of the title
-	 */
-	private int titleLabelHeight = 24;
+//	/*
+//	 * Decoration and frame border widths
+//	 */
+	private int decorationBorderWidth;
+	private int frameBorderWidth;
+//
+//	/*
+//	 * Height of the title
+//	 */
+	private int titleLabelHeight;
 
 	private boolean isParentFrame;
+	
+	private OxideSkin skin;
 	
 	/**
 	 * Creates an OxideFrame instance.
@@ -198,27 +200,25 @@ public class OxideFrame extends JFrame {
 	 * parent frame which has a title label height (30px) and font different from
 	 * a child frame (18px).
 	 */
-	public OxideFrame (boolean isParentFrame) {
+	public OxideFrame (boolean isParentFrame, OxideSkin skin) {
 		super();
 		
 		this.isParentFrame = isParentFrame;
-		
-		if (isParentFrame) {
-			titleLabelHeight = 30;
-			
-		} else {
-			titleLabelHeight = 18;
-		}
+		this.skin = skin;
 		
 		initFrame();
 		initBehavior();
-				
 	}
 	
 	/*
 	 * Initializes and builds the Oxide frame's decoration
 	 */
 	private void initFrame () {
+		
+		titleLabelHeight = (isParentFrame ?
+				skin.getParentFrameTitleBarHeight() : skin.getChildFrameTitleBarHeight());
+		decorationBorderWidth = skin.getDecorationBorderWidth();
+		frameBorderWidth = skin.getFrameBorderWidth();
 		
 		super.setUndecorated(true);
 		super.setVisible(true);
@@ -227,7 +227,7 @@ public class OxideFrame extends JFrame {
 		 * Initialize and decorate the parent frame (window border)
 		 */
 		framePane = (JPanel) super.getContentPane();
-		framePane.setBackground(OxidePalette.frameBorderColor);
+		framePane.setBackground(skin.getFrameBorderColor());
 		framePane.setLayout(null);
 		framePane.setOpaque(true);
 		
@@ -235,7 +235,7 @@ public class OxideFrame extends JFrame {
 		 * Initialize and decorate the decoration panel
 		 */
 		decorationPane = new JPanel();
-		decorationPane.setBackground(OxidePalette.decorationBorderColor);
+		decorationPane.setBackground(skin.getDecorationBorderColor());
 		decorationPane.setLayout(null);
 		decorationPane.setOpaque(true);
 		framePane.add(decorationPane);
@@ -250,9 +250,11 @@ public class OxideFrame extends JFrame {
 			 */
 			titleLabel = new DragAnchorLabel();
 			titleLabel.setVerticalAlignment(JLabel.CENTER);
-			titleLabel.setFont((isParentFrame) ? OxidePalette.titleFontFace : OxidePalette.subFrameTitleFontFace);
-			titleLabel.setForeground((isParentFrame) ? OxidePalette.titleFontColor : OxidePalette.subFrameTitleFontColor);
-			titleLabel.setBackground(OxidePalette.decorationBorderColor);
+			titleLabel.setFont((isParentFrame) ?
+					skin.getParentTitleFontFace() : skin.getChildTitleFontFace());
+			titleLabel.setForeground((isParentFrame) ?
+					skin.getParentTitleFontColor() : skin.getChildTitleFontColor());
+			titleLabel.setBackground(skin.getDecorationBorderColor());
 			titleLabel.setOpaque(true);
 			
 			/*
@@ -285,7 +287,7 @@ public class OxideFrame extends JFrame {
 		 * Initialize and decorate the content panel
 		 */
 		contentPane = new JPanel();
-		contentPane.setBackground(OxidePalette.contentPaneBackgroundColor);
+		contentPane.setBackground(skin.getContentPanelColor());
 		contentPane.setLayout(null);
 		contentPane.setOpaque(true);
 		decorationPane.add(contentPane);
@@ -469,6 +471,15 @@ public class OxideFrame extends JFrame {
 		closeButton.setActionListener(action);
 	}
 	
+	public OxideSkin getOxideSkin () {
+		return this.skin;		
+	}
+	
+	public void setOxideSkin (OxideSkin skin) {
+		this.skin = skin;
+		initFrame();
+	}
+	
 	/**
 	 * Test case: instantiates a frame of default size (no setBounds() call) and
 	 * makes it visible.
@@ -482,7 +493,7 @@ public class OxideFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run () {
 				try {
-					OxideFrame frame = new OxideFrame(true);
+					OxideFrame frame = new OxideFrame(true, new OxideDefaultSkin());
 					frame.setTitle("Oxide Frame Title");
 					frame.centerInViewport();
 					//frame.setVisible(true);

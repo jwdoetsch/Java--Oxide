@@ -13,7 +13,6 @@ import javax.swing.border.LineBorder;
  * ornamental compatibility with Metal, Java's cross-platform look and feel, and
  * define the Oxide aesthetic.
  * 
- * 
  * @author Jacob Wesley Doetsch
  */
 public class OxidePalette {
@@ -37,7 +36,7 @@ public class OxidePalette {
 	 * Defines the color of the border applied by LabelHoverListener in OxideFrame.
 	 */
 	public static final Color mouseHoverBorderColor = new Color(255, 255, 255);
-	
+//	
 	/**
 	 * Defines the font face of the title label text for parent frames.
 	 */
@@ -77,7 +76,7 @@ public class OxidePalette {
 	 * Defines the background color of selected Oxide menu buttons.
 	 */
 	public static final Color menuButtonUnselectedColor = new Color(163, 184, 204);
-	
+//	
 	/**
 	 * Defines the border and it's color that surrounds Oxide menu buttons upon which
 	 * the mouse cursor is hovering.
@@ -89,20 +88,20 @@ public class OxidePalette {
 	 * the mouse cursor isn't hovering.
 	 */
 	public static final EmptyBorder buttonDefaultBorder = new EmptyBorder(0, 0, 0, 0);
-	
-	/**
-	 * Defines Oxide palette color 1.
-	 */
-	public static final Color oxideShade1 = new Color(219, 229, 239);
-	
+//	
 //	/**
-//	 * Defines the aesthetic and decoration for Oxide-styled titled JPanels.
+//	 * Defines Oxide palette color 1.
 //	 */
-//	public static final Font titledPanelFontFace = new Font("Monospaced", Font.PLAIN, 13);
-//	public static final Color titledPanelFontColor = new Color(51, 51, 51);
-//	public static final Color titledPanelBorderColor = new Color(122, 138, 153);
-//
-//	public static final Border titledPanelBorder = new EtchedBorder(EtchedBorder.LOWERED);
+//	public static final Color oxideShade1 = new Color(219, 229, 239);
+//	
+////	/**
+////	 * Defines the aesthetic and decoration for Oxide-styled titled JPanels.
+////	 */
+////	public static final Font titledPanelFontFace = new Font("Monospaced", Font.PLAIN, 13);
+////	public static final Color titledPanelFontColor = new Color(51, 51, 51);
+////	public static final Color titledPanelBorderColor = new Color(122, 138, 153);
+////
+////	public static final Border titledPanelBorder = new EtchedBorder(EtchedBorder.LOWERED);
 
 	/**
 	 * Defines the font face of Oxide-styled UI control components such as JButton and JLabel.

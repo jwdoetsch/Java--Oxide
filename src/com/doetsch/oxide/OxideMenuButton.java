@@ -13,7 +13,6 @@ import javax.swing.JLabel;
  * cursor hovers over an OxideMenuButton it will be surrounded by
  * a thin white border, the OxideMenuButton is opaque and shows
  * a matte color the same as the OxideFrame's decoration color.
- * 
  */
 public class OxideMenuButton extends JLabel {
 
