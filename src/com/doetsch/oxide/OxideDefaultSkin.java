@@ -21,14 +21,14 @@ public class OxideDefaultSkin implements OxideSkin {
 		
 	}
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getFrameBorderColor()
 	 */
 	public int getDecorationBorderWidth () {
 		return 6; 
 	}
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getFrameBorderColor()
 	 */
 	public int getFrameBorderWidth () {
@@ -36,14 +36,14 @@ public class OxideDefaultSkin implements OxideSkin {
 	}
 	
 
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getFrameBorderColor()
 	 */
 	public int getParentFrameTitleBarHeight () {
 		return 30;
 	}
 
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getFrameBorderColor()
 	 */
 	@Override
@@ -52,7 +52,7 @@ public class OxideDefaultSkin implements OxideSkin {
 	}
 	
 
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getFrameBorderColor()
 	 */
 	@Override
@@ -60,7 +60,7 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Color(51, 51, 51);
 	}
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getDecorationBorderColor()
 	 */
 	@Override
@@ -69,7 +69,7 @@ public class OxideDefaultSkin implements OxideSkin {
 	}
 	
 
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getContentPanelColor()
 	 */
 	@Override
@@ -77,7 +77,7 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Color(238, 238, 238);
 	}
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getMouseHoverBorderColor()
 	 */
 	@Override
@@ -85,7 +85,7 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Color(255, 255, 255);
 	}
 	
-	/* (non-Javadoc)
+	/*
 	 * @see com.doetsch.oxide.OxideSkin#getParentTitleFontFace()
 	 */
 	@Override
@@ -93,7 +93,7 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Font("Monospaced", Font.BOLD, 22);
 	}
 	
-	/* (non-Javadoc)
+	/*
 	 * @see com.doetsch.oxide.OxideSkin#getParentTitleFontColor()
 	 */
 	@Override
@@ -101,7 +101,7 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Color(255, 255, 255);
 	}
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getChildTitleFontFace()
 	 */
 	@Override
@@ -109,7 +109,7 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Font("Monospaced", Font.BOLD, 18);
 	}
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getChildTitleFontColor()
 	 */
 	@Override
@@ -118,7 +118,7 @@ public class OxideDefaultSkin implements OxideSkin {
 	}
 	
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getMenuButtonFontFace()
 	 */
 	@Override
@@ -126,7 +126,7 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Font("Monospaced", Font.BOLD, 20);
 	}
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getMenuButtonFontColor()
 	 */
 	@Override
@@ -134,7 +134,7 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Color(255, 255, 255);
 	}
 	
-	/* (non-Javadoc)
+	/*
 	 * @see com.doetsch.oxide.OxideSkin#getMenuButtonSelectedColor()
 	 */
 	@Override
@@ -142,7 +142,7 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Color(122, 138, 153);
 	}
 	
-	/* (non-Javadoc)
+	/*
 	 * @see com.doetsch.oxide.OxideSkin#getMenubuttonUnselectedColor()
 	 */
 	@Override
@@ -150,7 +150,7 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Color(163, 184, 204);
 	}
 	
-	/* (non-Javadoc)
+	/*
 	 * @see com.doetsch.oxide.OxideSkin#getButtonHoverBorder()
 	 */
 	@Override
@@ -159,7 +159,7 @@ public class OxideDefaultSkin implements OxideSkin {
 	}
 	
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getButtonDefaultBorder()
 	 */
 	@Override
@@ -168,7 +168,7 @@ public class OxideDefaultSkin implements OxideSkin {
 	}
 
 
-	/* (non-Javadoc)
+	/*
 	 * @see com.doetsch.oxide.OxideSkin#getControlFontFace()
 	 */
 	@Override
@@ -176,7 +176,7 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Font("Monospaced", Font.PLAIN, 13);
 	}
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.doetsch.oxide.OxideSkin#getControlFontColor()
 	 */
 	@Override
@@ -184,12 +184,12 @@ public class OxideDefaultSkin implements OxideSkin {
 		return new Color(51, 51, 51);
 	}
 
+	/*
+	 * @see com.doetsch.oxide.OxideSkin#getShadeColor1()
+	 */
 	@Override
 	public Color getShadeColor1 () {
 		return new Color(219, 229, 239);
 	}
-
-
-
 
 }
